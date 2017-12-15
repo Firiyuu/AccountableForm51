@@ -32,17 +32,21 @@ class User(db.Model):
 
 
 
+# Returns the add_user.html
 @app.route('/')
 def index():
-
     return render_template('add_user.html')
 
+
+# Displays the table
 @app.route('/view')
 def view():
     myUser = User.query.all()
     return render_template('view.html', myUser=myUser)
 
 
+
+# Adds a user
 @app.route('/post_user', methods=['POST'])
 def post_user():
     user = User(request.form['firstname'], request.form['middlename'], request.form['lastname'], request.form['username'], request.form['password'], request.form['address'], request.form['contactno'])
@@ -50,11 +54,17 @@ def post_user():
     db.session.commit()
     return render_template('add_user.html')
 
+
+
+# Gets the id of the user then pass it to the updateform.html
 @app.route('/edit')
 def edit():
         id = request.args.get('id')
         return render_template('updateform.html', id=id)
 
+
+
+# Updates the information entered in updateform.html
 @app.route('/update_row', methods=['GET','POST'])
 def update_row():
     id = request.args.get('id')
