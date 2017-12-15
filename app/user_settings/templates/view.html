@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+</head>
+<body>
+    <div class="container" >
+		<div class="basicContent" style="width: 900px; height: 400px; overflow-y: scroll;">
+			<table class="table table-striped">
+				<tr>
+				<th>ID:</th>
+				<th>First Name:</th>
+				<th>Middle Name:</th>
+				<th>Last Name:</th>
+				<th>Username:</th>
+				<th>Password:</th>
+				<th>Address:</th>
+                <th>Contact No.:</th>
+				</tr>
+		{% for user in myUser %}
+		<tr>
+			<td>{{ user.id }}</td>
+			<td>{{ user.firstname }}</td>
+			<td>{{ user.middlename }}</td>
+			<td>{{ user.lastname }}</td>
+            <td>{{ user.username }}</td>
+			<td>{{ user.password }}</td>
+            <td>{{ user.address }}</td>
+            <td>{{ user.contactno }}</td>
+
+            <td><a href="{{ url_for('edit', id=user.id) }}">
+			<button class="btn">Update</button></a>
+
+		</tr>
+		{% endfor %}
+	</table>
+        </div>
+    </div>
+
+</body>
+</html>
