@@ -1,0 +1,22 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    ADD ACCOUNT
+{% endblock %}
+
+{% block content %}
+    <center>
+        <form action="/createaccount" method="POST">
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.firstname) }}
+            {{ wtf.form_field(form.middlename) }}
+            {{ wtf.form_field(form.lastname) }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            {{ wtf.form_field(form.repeatpass) }}
+            {{ wtf.form_field(form.officerrole) }}
+        <input type="submit" value="SUBMIT">
+        </form>
+    </center>
+{% endblock %}

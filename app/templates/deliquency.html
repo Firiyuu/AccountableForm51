@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Naawan Receipt System</title>
+
+    <link rel="stylesheet" href="static/header-second-bar.css">
+    <link rel="stylesheet" href="static/naturecss.css">
+    <link rel="stylesheet" href="static/dropdown.css">    
+    <link rel="stylesheet" href="static/masternavi.css">    
+
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+</head>
+
+<!-- HEADER -->
+
+<header class="header-two-bars">
+
+  <div class="header-first-bar">
+    <div class="header-limiter">
+      <h1><a href="/home">Municipality<span>Receipt</span></a></h1>
+            <nav>
+                <a href="/form" >FORM</a>
+                <a href="/logs" >LOGS</a>
+                <a href="/query" c>REPORTS</a>
+                <a href="/masterlist" class="selected">MASTERLISTS</a>
+                <div class="dropdown">
+                <a href="#"  disabled>PERMIT ISSUANCE</a>
+                <div class="dropdown-content">
+                <a href="/issuebusinesspermit" style="color:black;">Business Permit</a>
+                <p style="color:black;">_______________</p>
+                <a href="/issuebusinesspermit" style="color:black;">Official Receipt</a>
+
+
+                </div>
+                </div>
+
+
+            </nav>
+
+            <a href="/logout" class="logout-button">Logout</a>
+    </div>
+  </div>
+
+
+
+
+  <div class="header-second-bar">
+    <div class="header-limiter">
+            <h2>User: {{ user }}</h2>
+
+            <nav>
+                <a href="/addparameters"><i class="fa fa-comments-o"></i> Nature of Collection</a>
+                <a href="/user"><i class="fa fa-group"></i> User</a>
+                <a href="/admin"><i class="fa fa-cogs"></i> Admin Settings</a>
+            </nav>
+
+    </div>
+ </div>
+</header>
+
+
+
+<!-- CONTENT JUMBO -->
+
+<!--CONTENT STARTS HERE -->
+
+
+
+
+<link rel="stylesheet" href="static/indextest.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">   
+<link rel="stylesheet" href="static/indextest.css">
+<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+
+
+<div class="jumbotron jumbotron-sm">
+<div class="container" id = "contact">
+<div class="row">
+<div class="col-sm-12 col-lg-12">
+    <h1 class="h1">
+        ACCOUNTABLE FORM 51 <small>DELIQUENCY LIST</small>
+    </h1>
+
+</div>
+</div>
+</div> <!-- CONTAINER ENDS -->
+</div><!-- JUMBO ENDS -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <body>
+  
+    <table id="myTable" class="table table-hover">
+<thead class="thead-dark">
+  <tr>
+    <th scope="col">Payor</th>
+    <th scope="col">Due Date</th>
+    <th scope="col">Surcharge</th>
+    <th scope="col">Action</th>
+    <th scope="col">Transaction</th>
+  </tr>
+</thead>
+<tbody>
+  {%for row in rows%}
+  <tr>
+  <td>{{row.name}}</td>
+  <td>{{row.date}}</td>
+  <td>{{row.penalty}}</td>
+  <td><button type="button" class="btn btn-primary mybutton" data-toggle="modal" data-target="#exampleModal" id="editRow" data-row-val="{{row.name}}" >Edit</button>
+
+  <form action="/delinquency/delete" method="POST">
+    <input type="hidden" name="delete_row" value="{{row.name}}">
+    <button type="submit" class="btn btn-danger" name="delete">Delete</button>
+  </form>
+</td>
+  <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#payModal" id="pay" >Pay</td>
+
+  </tr>
+  {% endfor %}
+
+</tbody>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form class="form-horizontal" action="/delinquency/edit" method="POST" role="form">
+      <input type="text" name="entity_key" class="hidden">
+    <div class="modal-body edit-body">
+    <div class="form-group">
+    <label for="payor" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="payor" name="payor" value="">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="penalty" class="col-sm-2 control-label">Date</label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control" id="date" name="date">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="penalty" class="col-sm-2 control-label">Penalty</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="penalty" name="penalty" placeholder="Amount">
+    </div>
+  </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="submit" class="btn btn-primary">Save changes</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Pay MOdall -->
+<div class="modal" id="payModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pay Tax Due</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col-xs-3">
+            <div class="form-group">
+                <select class="selectpicker form-control" id="myselect">
+                {% for get in gets%}
+                <option value="{{get[0]}}">{{get[0]}}</option>
+                {%endfor%}
+              </select>
+              <button type="submit" name="button" id="trigger">Select</button>
+            </div>
+              <table class="table table-bordered" id="subtable">
+              <thead>
+                  <tr>
+                    <th scope="col">Quarter</th>
+                    <th scope="col">O.R.number</th>
+                    <th scope="col">Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1st Quarter</td>
+                    <td id="q1"> </td>
+                    <td><button type="button" class="btn btn-primary subbutton" data-toggle="modal" data-target="#submodal" id="pay" data-row-val="q1" >Pay</button></td>
+                </tr>
+
+                <tr>
+                  <td>2nd Quarter</td>
+                    <td id="q2"> </td>
+                    <td><button type="button" class="btn btn-primary subbutton" data-toggle="modal" data-target="#submodal" id="pay" data-row-val="q2" >Pay</button></td>
+                </tr>
+
+                <tr>
+                  <td>3rd Quarter</td>
+                    <td id="q3"> </td>
+                    <td><button type="button" class="btn btn-primary subbutton" data-toggle="modal" data-target="#submodal" id="pay" data-row-val="q3" >Pay</button></td>
+                </tr>
+
+                <tr>
+                  <td>4th Quarter</td>
+                    <td id="q4"> </td>
+                    <td><button type="button" class="btn btn-primary subbutton" data-toggle="modal" data-target="#submodal" id="pay" data-row-val="q4" >Pay</button></td>
+                </tr>
+
+              </tbody>
+            </table>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<div class="modal fade bd-example-modal-sm" id="submodal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+  <div class="modal-header">
+        <h5 class="modal-title">Pay</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <div class="modal-content subcontent">
+    <form action="/delinquency/pay" methods="POST">
+     <div class="form-group">
+    <label for="postAmount" class="col-sm-2 control-label">Amount</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="postAmount" name="post_amount">
+    </div>
+      <input type="hidden" name="target" id="target" value="">
+  </div>
+       <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Process</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+      <script type="text/javascript">
+          function ConfirmDelete(o){
+            var x = confirm("Are you sure you want to delete?");
+            var p=o.parentNode.parentNode;
+            if (x)
+              p.parentNode.removeChild(p)
+            else
+            return false;
+          }
+      </script>
+
+      <script>
+        $(document).ready(function(){
+
+          $('#myTable').dataTable();
+
+          $('.mybutton').click(function(){
+              $("#exampleModal .modal-title").html("<h3>Edit data</h3>");
+              $("#exampleModal button[type=submit]").html("Save changes");
+              var my_row_value = $(this).attr('data-row-val');
+              $(".edit-body #payor").val(my_row_value );
+
+          })
+
+          $('.subbutton').click(function(){
+             var my_row_value = $(this).attr('data-row-val');
+              $(".subcontent #target").val(my_row_value );
+          })
+          $('#trigger').click(function(){
+            var send = $('#myselect').val();
+            $.ajax({
+
+                data:{
+                  sent: send
+                },
+                type: 'POST',
+                url: '/delinquency'
+            })
+            .done(function(data){
+            var  datas=JSON.stringify(data)
+
+              q1=data[1]
+              q2=data[2]
+              q3=data[3]
+              q4=data[4]
+              console.log(datas)
+              console.log(q4)
+              $('#q1').html(q1)
+              $('#q2').html(q2)
+              $('#q3').html(q3)
+              $('#q4').html(q4)
+            })
+          })
+        })
+
+
+      </script>
+  </body>
+</html>

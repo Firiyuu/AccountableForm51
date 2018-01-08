@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+    <title>Ozamis Receipt System</title>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<script type="text/javascript">
+$(function() {
+    $('input[name="start"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true
+    })
+});
+
+$(function() {
+    $('input[name="end"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true
+    })
+});
+</script>
+	<style>
+		*{
+			box-sizing: border-box;
+		}
+		.main{
+			font-size: 60px;
+			background-color:#b564e3;
+			padding: 10px;
+			float:up;
+			alignment: center;
+		}
+		.calendar{
+			font-size: 25px;
+		}
+		.form{
+			border: 3px solid #631473;
+			width: 45%;
+			margin:auto;
+		}
+		input[type=submit]{
+			font-size: 20px;
+            background-color: white;
+            border: 2px solid #631473;
+            color: black;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+            }
+        input[type="submit"]:hover {
+	        background: #D401FE;
+            }
+        .dropdown-menu{
+            min-width: 320px;
+        }
+	</style>
+
+
+
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Naawan Receipt System</title>
+
+    <link rel="stylesheet" href="static/header-second-bar.css">
+    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="static/dropdown.css">    
+       <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/indextest.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script src="4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   
+<link rel="stylesheet" href="static/indextest.css">
+
+<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+
+
+<style>
+.dropdown-menu{
+            min-width: 320px;
+        }
+</style>
+</head>
+
+
+
+<body>
+
+<header class="header-two-bars">
+
+  <div class="header-first-bar">
+    <div class="header-limiter">
+      <h1><a href="/home">Municipality<span>Receipt</span></a></h1>
+            <nav>
+                <a href="/form" c>FORM</a>
+                <a href="/logs">LOGS</a>
+                <a href="/query" class="selected">REPORTS</a>
+                <a href="/masterlist">MASTERLISTS</a>
+                <div class="dropdown">
+                <a href="#"  disabled>PERMIT ISSUANCE</a>
+                <div class="dropdown-content">
+                <a href="/issuebusinesspermit" style="color:black;">Business Permit</a>
+                <p style="color:black;">_______________</p>
+                <a href="/payments" style="color:black;">Official Receipt</a>
+
+
+                </div>
+                </div>
+
+
+            </nav>
+
+            <a href="/logout" class="logout-button">Logout</a>
+    </div>
+  </div>
+
+
+
+
+  <div class="header-second-bar">
+    <div class="header-limiter">
+            <h2>User: {{ user }}</h2>
+
+            <nav>
+                <a href="/addparameters"><i class="fa fa-comments-o"></i> Nature of Collection</a>
+                <a href="/user"><i class="fa fa-group"></i> User</a>
+                <a href="/print"><i class="fa fa-cogs"></i> Admin Settings</a>
+            </nav>
+
+    </div>
+ </div>
+
+</header>
+
+
+
+
+
+<!-- CONTENT HERE. -->
+
+
+
+
+
+<div class="jumbotron jumbotron-sm">
+    <div class="container" id = "contact">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <h1 class="h1">
+                    Reports</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</head>
+<br><br>
+<body>
+    <center>
+        <form class="form" action="/transact" method="POST">
+			<div class="calendar">
+		<br><label>From <input type="text" name="start" for="start"/></label><br> <label>To <input type="text" name="end" for="end"/></label>
+			</div><br><br>
+        <p><input type="submit" value="SUBMIT"></p><br>
+        </form>
+    </center>
+</body>
+</html>

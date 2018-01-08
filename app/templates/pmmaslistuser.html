@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ozamis Receipt System</title>
+
+    <link rel="stylesheet" href="static/header-second-bar.css">
+    <link rel="stylesheet" href="static/naturecss.css">
+    <link rel="stylesheet" href="static/dropdown.css">    
+    <link rel="stylesheet" href="static/masternavi.css">    
+
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">    
+    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+</head>
+
+<!-- HEADER -->
+
+<header class="header-two-bars">
+
+   <div class="header-first-bar">
+    <div class="header-limiter">
+      <h1><a href="/home">Municipality<span>Receipt</span></a></h1>
+            <nav>
+                <a href="/form" >FORM</a>
+
+                <a href="/masterlist" class="selected">MASTERLISTS</a>
+                <div class="dropdown">
+                <a href="#"   disabled>PERMIT ISSUANCE</a>
+                <div class="dropdown-content">
+                <a href="/issuebusinesspermit" style="color:black;">Business Permit</a>
+                <p style="color:black;">_______________</p>
+                <a href="/payments" style="color:black;">Official Receipt</a>
+
+
+                </div>
+                </div>
+
+
+            </nav>
+
+            <a href="/logout" class="logout-button">Logout</a>
+    </div>
+  </div>
+
+
+
+
+  <div class="header-second-bar">
+    <div class="header-limiter">
+            <h2>User: {{ user }}</h2>
+
+            <nav>
+                <a href="/user"><i class="fa fa-group"></i> User</a>
+         
+            </nav>
+
+    </div>
+ </div>
+
+
+
+
+  </div>
+
+
+
+
+  
+
+</header>
+
+
+
+<!-- CONTENT JUMBO -->
+
+<!--CONTENT STARTS HERE -->
+
+
+
+
+<link rel="stylesheet" href="static/indextest.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">   
+<link rel="stylesheet" href="static/indextest.css">
+<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+
+
+<div class="jumbotron jumbotron-sm">
+<div class="container" id = "contact">
+<div class="row">
+    <h1 class="h1">
+        PAYMENTS MASTER
+    </h1>
+
+</div>
+</div> <!-- CONTAINER ENDS -->
+</div><!-- JUMBO ENDS -->
+
+
+
+<!-- CONTENT JUMBO ENDS -->
+
+
+<table id="example" class="display" width="100%" cellspacing="0">
+        <thead>
+    <tr>
+    <th>Payor</th>
+    <th>Payments</th>
+    <th>Receipt No.</th>
+    <th>Officer-in-charge</th>  
+    <th>Collection Date</th> 
+    <th>Nature of Collection</th>   
+    <th>Remarks</th>   
+
+    </tr>
+        </thead>
+        <tfoot>
+            <tr>
+ 
+            </tr>
+        </tfoot>
+        <tbody>
+
+
+         {% for row in rows %}
+
+            <tr>
+
+               <td>{{row[0]}}</td>
+               <td>{{row[1]}}</td>
+               <td>{{row[2]}}</td>
+               <td>{{row[3]}}</td>
+               <td>{{row[4]}}</td>
+               <td>{{row[5]}}</td>
+               <td>{{row[6]}}</td>
+          
+
+   
+    
+
+
+
+            <td>
+            <form action="/payments/report/{{row[2]}}.pdf" method=post>
+            <input type=hidden value="{{ row[2] }}" name="row_print"></input>
+            <button class="btn btn-danger" type="submit" name="delete"><span class="glyphicon glyphicon-print"></span> Print Receipt</button>      
+            </form>
+            </td>
+
+            </tr>
+
+         {% endfor %}
+
+
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        
+
+        $(document).ready(function() {
+              $("[data-toggle=tooltip]").tooltip();
+    $('#datatable').DataTable({
+    "bFilter": true
+  } );
+} );
+    </script>
+
+
+ 
+
+
+
+
+
+
+   <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+   <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+   <script  src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+    </body>
+  
+    </html>
+
+

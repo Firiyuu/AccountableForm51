@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PRINT ALL ACCOUNTS</title>
+</head>
+<body>
+<center>
+    <br><br><br><h5>THIS ARE ALL THE ACCOUNTS</h5>
+    <br><br><br>
+<table border="3">
+    <thead>
+        <th><center>ID</center></th>
+        <th><center>USERNAME</center></th>
+        <th><center>FIRST NAME</center></th>
+        <th><center>MIDDLE NAME</center></th>
+        <th><center>LAST NAME</center></th>
+        <th><center>OFFICER TYPE</center></th>
+    </thead>
+    {% for user in myUser %}
+        <tr>
+
+            <td><center>#{{ user.id }}</center></td>
+            <td><center>{{ user.username }}</center></td>
+            <td><center>{{ user.firstname }}</center></td>
+            <td><center>{{ user.middlename }}</center></td>
+            <td><center>{{ user.lastname }}</center></td>
+            <td><center>{{ user.officerrole }}</center></td>
+
+        </tr>
+    {% endfor %}
+</table>
+</center>
+</body>
+</html>

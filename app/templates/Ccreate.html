@@ -1,0 +1,56 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    ADD ACCOUNT
+{% endblock %}
+
+{% block content %}
+
+    <title>Ozamis Receipt System</title>
+    <style>
+        .center {
+            margin: auto;
+            width: 20%;
+            border: 5px solid #631473;
+            background: white;
+            padding: 10px;
+            }
+        input[type=button], input[type=submit], input[type=reset] {
+            background-color: white;
+            border: 2px solid #631473;
+            color: black;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+            }
+        input[type="submit"]:hover {
+	        background: #D401FE;
+            }
+        h4 {
+            color: #D401FE;
+        }
+
+    </style>
+    <br><br><br><br>
+    <div class="center">
+        <center><h1>REGISTER</h1></center><font size="1"><h4>{{msg}}</h4></font>------------------------------------------------
+        <br><br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <form action="/createaccount" method="POST">
+                        {{ form.hidden_tag() }}
+                        <center>{{ wtf.form_field(form.firstname) }}</center>
+                        <center>{{ wtf.form_field(form.middlename) }}</center>
+                        <center>{{ wtf.form_field(form.lastname) }}</center>
+                        <center>{{ wtf.form_field(form.username) }}</center>
+                        <center><input type="submit" value="SUBMIT"></center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
