@@ -1,0 +1,171 @@
+<style>
+    .form{
+border:3px;
+border-radius:6px;
+border-color:black;
+border-style:solid;
+padding:2px;
+width:600px;
+margin:auto;
+margin-top:30px;
+height:800px;
+}
+.header img{
+float:left;
+width:125px;
+height:125px;
+margin-left:30px;
+}
+.header h2{
+position:relative;
+top:18px;
+left:10px;
+}
+.table{
+border-collapse:collapse;
+width:490px;
+}
+.table2{
+border-collapse:collapse;
+width:300px;
+}
+.table th{
+height:25px;
+border: 1px;
+border-style:solid;
+border-color:gray;
+}
+.table td{
+height:25px;
+border: 1px;
+border-style:solid;
+border-color:gray;
+}
+.table2 th{
+height:25px;
+border: 1px;
+border-style:solid;
+border-color:gray;
+}
+.table2 td{
+height:25px;
+border: 1px;
+border-style:solid;
+border-color:gray;
+}
+.table tfoot{
+width:490px;
+}
+hr{
+height:0;
+border:0;
+border-top:2px solid black;
+}
+</style>
+<body>
+<div class="form"
+    <form id="form1">
+    <div>
+    </div>
+     <div class="header">
+        <img src="{{ url_for('static', filename='coa.png') }}">
+         <center><h2> Official Receipt <br/> of the <br/> Republic of the Philippines</h2></center>
+     </div>
+        <br/>
+        <br/>
+    <center>
+    <table id="table1"; cellspacing="5px" cellpadding="5%"; align="center">
+        <hr>
+       <tr>
+              <td  align="right" class="style1">OR No.:</td>
+              <td class="style1"><input type="text" /></td>
+              <td align="right">Date:</td>
+              <td class="style1"><input type="text" style="width:195px;" /><td>
+       </tr>
+       <tr>
+              <td align="right">Agency:</td>
+              <td><input type="text" /></td>
+              <td align="right" >Fund:</td>
+              <td><input type="text" style="width:195px;"  /></td>
+       </tr>
+
+        <table class="table">
+        <tr>
+            <th>Nature of Collection:</th>
+            <th>Amount:</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+             <tr>
+            <td></td>
+            <td></td>
+        </tr>
+             <tr>
+            <td></td>
+            <td></td>
+        </tr>
+             <tr>
+            <td></td>
+            <td></td>
+        </tr>
+             <tr>
+            <td></td>
+            <td></td>
+        </tr>
+             <tr>
+            <td></td>
+            <td></td>
+        </tr>
+             <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tfoot>
+        <tr>
+            <td style="font-weight:bold" colspan="3">Total</td>
+        </tr>
+        </tfoot>
+    </table>
+        <br/>
+    </center>
+        <br/>
+    <form action="method" style="margin-left:50px;">
+        <input type="checkbox">Cash<br>
+        <input type="checkbox">Check<br>
+        <input type="checkbox">Money Order<br>
+    </form>
+        <table class="table2" align="right" style="margin-right:55px; margin-top: -250px;">
+        <tr>
+            <th>Drawee Bank:</th>
+            <th>Number:</th>
+            <th>Date:</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+             <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </form>
+    <hr>
+<p style="margin-left:30px;">Received the amount stated above.</p>
+<hr style="width:30%; border-top:1px solid black; margin-right:30px;">
+<p style="float:right; margin-right:50px; margin-top:1px;">Collecting Officer</p>
+
+</div>
+<br/>
+<hr style="width:600px;">
+<p style="margin-left:30px;">NOTE: Write the number and date of this receipt on the back of check or money order received.</p>
+
+
+</body>
