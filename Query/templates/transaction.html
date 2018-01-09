@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+    <title>Transact</title>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<script type="text/javascript">
+$(function() {
+    $('input[name="start"]').daterangepicker({
+	dateFormat: 'mm-dd-yy',
+        singleDatePicker: true,
+        showDropdowns: true
+    })
+});
+
+$(function() {
+    $('input[name="end"]').daterangepicker({
+	dateFormat: 'mm-dd-yy',
+        singleDatePicker: true,
+        showDropdowns: true
+    })
+});
+</script>
+	<style>
+		body{	
+			margin-top: 20px;
+			background-image: url(logo1.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 850px;
+			
+		}	
+		div{	
+			
+			box-sizing: border-box;
+		}
+		.trans{
+			font-family: sans-serif;
+			margin: auto;
+			font-size: 50px;
+			padding: 0;
+			color: #000000;
+			width: 100%;
+			
+		}
+		.calendar{
+			font-family: sans-serif;
+			font-size: 25px;
+			color: #444;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-left: 10px;
+			margin-right: 10px;
+			
+		}
+		.calendar input{
+			padding: 10px;
+			background: #fff;
+			border: 1px solid #000000;
+			font-size: 15px;
+			color: #555;
+			box-shadow: 0 2px 2px 0 #ccc;
+		}
+		form{	
+				
+			background: transparent;
+			width: 40%;
+			margin:auto;
+			
+		}
+		input[type="submit"]{
+			font-family: sans-serif;
+			font-size: 15px;
+            		background-color: white;
+            		border: 1.5px solid #000000;
+            		color: black;
+			border-radius: 5px;
+            		padding: 10px 10px;
+            		text-decoration: none;
+            		cursor: pointer;
+			box-shadow: 0 2px 2px 0 #ccc;
+            	}
+        	input[type="submit"]:hover {
+	        	background: #eee;
+            	}
+	</style>
+
+	</head>
+<br>
+<body>
+	<br><br>
+    <center>
+        <form class="form" action="/transact" method="POST">
+<div class ="trans">
+	<h2>Transact</h2>
+</div>
+			<div class="calendar">
+		<p><input type="text" name="start" for="start"/>  to <input type="text" name="end" for="end"/></p>
+			</div>
+        <p><input type="submit" value="SUBMIT"></p>
+        </form>
+    </center>
+</body>
+</html>
